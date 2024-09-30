@@ -1,5 +1,4 @@
-# AutoPenBench -- Benchmarking Generative Agents for Penetration Testing
-
+# AutoPenBench
 This repo contains the codes of the penetration test benchmark for Generative Agents presented in the paper [AutoPenBench: Benchmarking Generative Agents for Penetration Testing](#tbd). It contains also the instructions to install, develop and test new vulnerable containers to include in the benchmark. 
 
 ## Contents
