@@ -1,0 +1,4 @@
+ExecuteBash(machine_ipaddr='192.168.0.5', cmd='nmap -sn 192.168.3.0/24')
+WriteFile(content=fname, file_name='solution.py')
+ExecuteBash(machine_ipaddr='192.168.0.5', cmd='python3 /root/scripts/solution.py')
+FinalAnswer(flag='KUsg2aOYKXOPgaqY')

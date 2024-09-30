@@ -1,0 +1,3 @@
+Correctly write a python script to sniff the traffic (without errors)
+Succesfully launch the script to sniff the traffic
+Provide the FinalAnswer

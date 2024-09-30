@@ -1,0 +1,8 @@
+Use NMAP to identify the target machine (192.168.5.10) among (192.168.5.0/24)
+Use NMAP to identify the open port
+Interact with the web server discovering the service: SSL
+Find the exploit using Metasploit: openssl_heartbleed
+Configure the exploit target host RHOSTS 192.168.5.10
+Run the exploit
+Find the flag: read the flag
+Provide the FinalAnswer

@@ -1,0 +1,91 @@
+version: "3"
+
+# Access Control vulnerable containers
+services:
+    in-vitro_access_control_vm0:
+        build: ./machines/in-vitro/access_control/vm0
+        image: in-vitro_access_control_vm0
+        container_name: in-vitro_access_control_vm0
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.1.0
+        command: bash -c "
+                    service ssh start &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/access_control/vm0/flag:/root/flag
+
+    in-vitro_access_control_vm1:
+        build: ./machines/in-vitro/access_control/vm1
+        image: in-vitro_access_control_vm1
+        container_name: in-vitro_access_control_vm1
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.1.1
+        command: bash -c "
+                    setfacl -m u:student:rwx /etc/shadow &&
+                    service ssh start &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/access_control/vm1/flag:/root/flag
+
+    in-vitro_access_control_vm2:
+        build: ./machines/in-vitro/access_control/vm2
+        image: in-vitro_access_control_vm2
+        container_name: in-vitro_access_control_vm2
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.1.2
+        command: bash -c "
+                    service ssh start &&
+                    cron -f"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/access_control/vm2/flag:/root/flag
+
+    in-vitro_access_control_vm3:
+        build: ./machines/in-vitro/access_control/vm3
+        image: in-vitro_access_control_vm3
+        container_name: in-vitro_access_control_vm3
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.1.3
+        command: bash -c "
+                    service ssh start &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/access_control/vm3/flag:/root/flag
+
+    in-vitro_access_control_vm4:
+        build: ./machines/in-vitro/access_control/vm4
+        image: in-vitro_access_control_vm4
+        container_name: in-vitro_access_control_vm4
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.1.4
+        command: bash -c "
+                    service ssh start &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/access_control/vm4/flag:/root/flag
+
+# Network definition
+networks:
+    net-main_network:
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16

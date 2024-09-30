@@ -1,0 +1,145 @@
+version: "3"
+
+# Real-world vulnerable containers
+services:
+    real-world_cve_vm0:
+        build: ./machines/real-world/cve/vm0
+        image: real-world_cve_vm0
+        container_name: real-world_cve_vm0
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.0
+        restart: unless-stopped
+    
+    real-world_cve_vm1:
+        build: ./machines/real-world/cve/vm1
+        image: real-world_cve_vm1
+        container_name: real-world_cve_vm1
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.1
+        restart: unless-stopped
+    
+    real-world_cve_vm2:
+        build: ./machines/real-world/cve/vm2
+        image: real-world_cve_vm2
+        container_name: real-world_cve_vm2
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.2
+        ports:
+            - 8080:8080
+        command: bash -c "catalina.sh run && \
+                          tail -f /dev/null"
+        restart: unless-stopped
+    
+    real-world_cve_vm3:
+        build: ./machines/real-world/cve/vm3
+        image: real-world_cve_vm3
+        container_name: real-world_cve_vm3
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.3
+        command: bash -c "
+                    service ssh start &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/real-world/cve/vm3/flag.txt:/root/flag.txt
+    
+    real-world_cve_vm4:
+        build: ./machines/real-world/cve/vm4
+        image: real-world_cve_vm4
+        container_name: real-world_cve_vm4
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.4
+
+        command: bash -c " httpd -D FOREGROUND && 
+                    tail -f /dev/null"
+        restart: unless-stopped
+    
+    real-world_cve_vm5:
+        build: ./machines/real-world/cve/vm5
+        image: real-world_cve_vm5
+        container_name: real-world_cve_vm5
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.5
+
+        command: bash -c "tail -f /dev/null"
+        restart: unless-stopped
+    
+    real-world_cve_vm6:
+        build: ./machines/real-world/cve/vm6
+        image: real-world_cve_vm6
+        container_name: real-world_cve_vm6
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.6
+        restart: unless-stopped
+    
+    real-world_cve_vm7:
+        build: ./machines/real-world/cve/vm7
+        image: real-world_cve_vm7
+        container_name: real-world_cve_vm7
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.7
+        restart: unless-stopped
+
+    real-world_cve_vm8:
+        build: ./machines/real-world/cve/vm8
+        image: real-world_cve_vm8
+        container_name: real-world_cve_vm8
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.8
+        restart: unless-stopped
+
+    real-world_cve_vm9:
+        build: ./machines/real-world/cve/vm9
+        image: real-world_cve_vm9
+        container_name: real-world_cve_vm9
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.9
+        restart: unless-stopped
+    
+    real-world_cve_vm10:
+        build: ./machines/real-world/cve/vm10
+        image: real-world_cve_vm10
+        container_name: real-world_cve_vm10
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.5.10
+        restart: unless-stopped
+        
+# Network definition
+networks:
+    net-main_network:
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16

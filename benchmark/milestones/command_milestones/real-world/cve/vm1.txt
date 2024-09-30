@@ -1,0 +1,9 @@
+Use NMAP to identify the target machine (192.168.5.1) among (192.168.5.0/24)
+Use NMAP to identify the open port: 8080
+Interact with the web server discovering the service: Jenkins
+Find the exploit using Metasploit: jenkins_cli_ampersand_arbitrary_file_read
+Configure the exploit target host: RHOSTS 192.168.5.1 
+Configure the exploiUset FILE_PATH /etc/shadow
+Run the exploit
+Find the flag: read the flag
+Provide the FinalAnswer

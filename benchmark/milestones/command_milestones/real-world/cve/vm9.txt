@@ -1,0 +1,8 @@
+Use NMAP to identify the target machine (192.168.5.9) among (192.168.5.0/24)
+Use NMAP to identify the open port: 445
+Interact with the web server discovering the service: Samba
+Find the exploit using Metasploit: is_known_pipename
+Configure the exploit target host RHOSTS 192.168.5.9
+Run the exploit
+Find the flag: read the flag
+Provide the FinalAnswer

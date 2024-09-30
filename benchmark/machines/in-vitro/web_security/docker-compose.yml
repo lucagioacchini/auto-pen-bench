@@ -1,0 +1,154 @@
+version: "3"
+
+# Web Security vulnerable containers
+services:
+    in-vitro_web_security_vm0:
+        build: ./machines/in-vitro/web_security/vm0
+        image: in-vitro_web_security_vm0
+        container_name: in-vitro_web_security_vm0
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.0
+        restart: unless-stopped
+        command: bash -c "
+                    php -S 0.0.0.0:80 && 
+                    tail -f /dev/null"            
+        volumes:
+            - ./machines/in-vitro/web_security/vm0/flag.txt:/root/flag.txt
+        
+    in-vitro_web_security_vm1:
+        build: ./machines/in-vitro/web_security/vm1
+        image: in-vitro_web_security_vm1
+        container_name: in-vitro_web_security_vm1
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.1
+        restart: unless-stopped
+        command: bash -c "
+                    php -S 0.0.0.0:80 && 
+                    tail -f /dev/null"            
+        volumes:
+            - ./machines/in-vitro/web_security/vm1/flag.txt:/root/flag.txt
+
+    in-vitro_web_security_vm2:
+        build: ./machines/in-vitro/web_security/vm2
+        image: in-vitro_web_security_vm2
+        container_name: in-vitro_web_security_vm2
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.2
+        restart: unless-stopped
+        command: bash -c "
+                    php -S 0.0.0.0:80 && 
+                    tail -f /dev/null"            
+        volumes:
+            - ./machines/in-vitro/web_security/vm2/flag.txt:/root/flag.txt
+        
+
+
+    in-vitro_web_security_vm3:
+        build: ./machines/in-vitro/web_security/vm3
+        image: in-vitro_web_security_vm3
+        container_name: in-vitro_web_security_vm3
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.3
+        restart: unless-stopped
+        command: bash -c "
+                    php -S 0.0.0.0:80 &&
+                    tail -f /dev/null"            
+        depends_on:
+            - in-vitro_web_security_vm3_database
+
+    in-vitro_web_security_vm3_database:
+        image: mysql:5.7
+        container_name: db_service_vm3
+        hostname: db_service_vm3
+        restart: always
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.255
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./machines/in-vitro/web_security/vm3/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    in-vitro_web_security_vm4:
+        build: ./machines/in-vitro/web_security/vm4
+        image: in-vitro_web_security_vm4
+        container_name: in-vitro_web_security_vm4
+        hostname: in-vitro_web_security_vm4
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.4
+        ports:
+            - 8080:80
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/web_security/vm4/flag.txt:/flag.txt      
+        depends_on:
+            - in-vitro_web_security_vm4_database    
+
+    in-vitro_web_security_vm4_database:
+        build: ./machines/in-vitro/web_security/vm4_db
+        image: db_service_vm4
+        container_name: db_service_vm4
+        command: --default-authentication-plugin=mysql_native_password
+        tty: true
+        restart:  unless-stopped
+        cap_add:
+                - SYS_NICE 
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.254
+
+    in-vitro_web_security_vm5:
+        build: ./machines/in-vitro/web_security/vm5
+        image: in-vitro_web_security_vm5
+        container_name: in-vitro_web_security_vm5
+        hostname: in-vitro_web_security_vm5
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.5
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/web_security/vm5/flag.txt:/flag.txt  
+        command: bash -c "
+                    php -S 0.0.0.0:80 &&
+                    tail -f /dev/null"
+    
+    in-vitro_web_security_vm6:
+        build: ./machines/in-vitro/web_security/vm6
+        image: in-vitro_web_security_vm6
+        container_name: in-vitro_web_security_vm6
+        hostname: in-vitro_web_security_vm6
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.2.6
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/web_security/vm6/flag.txt:/flag.txt  
+        command: bash -c "
+                    php -S 0.0.0.0:80 &&
+                    tail -f /dev/null"      
+
+# Network definition
+networks:
+    net-main_network:
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16

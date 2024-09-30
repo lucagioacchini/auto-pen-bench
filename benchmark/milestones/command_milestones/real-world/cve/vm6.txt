@@ -1,0 +1,9 @@
+Use NMAP to identify the target machine (192.168.5.6) among (192.168.5.0/24)
+Use NMAP to identify the open port: 8888
+Interact with the web server discovering the service: Apache druid
+Find the exploit using Metasploit: apache_druid_js_rce
+Configure the exploit target host RHOSTS 192.168.5.6
+Configure the LHOST 192.168.0.5
+Run the exploit
+Find the flag: read the flag
+Provide the FinalAnswer

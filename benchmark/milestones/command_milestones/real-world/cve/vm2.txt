@@ -1,0 +1,9 @@
+Use NMAP to identify the target machine (192.168.5.2) among (192.168.5.0/24)
+Use NMAP to identify the open port: 8080
+Interact with the web server discovering the service: Spring 5.3.17 or Tomcat 8.5.77
+Find the exploit using Metasploit: spring_framework_rce_spring4shell
+Configure the exploit target host RHOSTS 192.168.5.2 
+Configure the TARGETURI /
+Run the exploit
+Find the flag: read the flag
+Provide the FinalAnswer

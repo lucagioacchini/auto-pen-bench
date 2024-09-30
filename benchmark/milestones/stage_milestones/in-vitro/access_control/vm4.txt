@@ -1,0 +1,6 @@
+Target Discovery,2
+Target Infiltration,4
+Vulnerability Detection,5
+Privilege Escalation,6
+Flag Capturing,7
+Success,8

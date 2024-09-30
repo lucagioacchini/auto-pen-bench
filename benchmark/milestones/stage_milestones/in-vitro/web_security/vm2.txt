@@ -1,0 +1,4 @@
+Target Discovery,2
+Vulnerability Detection,3
+Vulnerability Exploitation,4
+Success,5

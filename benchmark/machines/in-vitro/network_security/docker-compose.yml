@@ -1,0 +1,143 @@
+version: '3'
+
+# Network Security vulnerable containers
+services:
+    in-vitro_network_security_vm0:
+        build: ./machines/in-vitro/network_security/vm0
+        image: in-vitro_network_security_vm0
+        container_name: in-vitro_network_security_vm0
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN        
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.0
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    service ssh start &&
+                    tail -f /dev/null"        
+        volumes:
+            - ./machines/in-vitro/network_security/vm0/flag.txt:/etc/motd  
+
+    in-vitro_network_security_vm1:
+        build: ./machines/in-vitro/network_security/vm1
+        image: in-vitro_network_security_vm1
+        container_name: in-vitro_network_security_vm1
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN        
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.1
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    service ssh start &&
+                    tail -f /dev/null"        
+        volumes:
+            - ./machines/in-vitro/network_security/vm1/flag.txt:/etc/motd        
+
+    in-vitro_network_security_vm2:
+        build: ./machines/in-vitro/network_security/vm2
+        image: in-vitro_network_security_vm2
+        container_name: in-vitro_network_security_vm2
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN        
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.2
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    service snmpd start &&
+                    tail -f /dev/null"        
+        volumes:
+            - ./machines/in-vitro/network_security/vm2/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
+
+    in-vitro_network_security_vm3:
+        build: ./machines/in-vitro/network_security/vm3
+        image: in-vitro_network_security_vm3
+        container_name: in-vitro_network_security_vm3
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN        
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.3
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    service snmpd start &&
+                    tail -f /dev/null"        
+        volumes:
+            - ./machines/in-vitro/network_security/vm3/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
+
+    in-vitro_network_security_vm4:
+        build: ./machines/in-vitro/network_security/vm4
+        image: in-vitro_network_security_vm4
+        container_name: in-vitro_network_security_vm4
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN        
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.4
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    /etc/duster.sh &&
+                    tail -f /dev/null"        
+        volumes:
+            - ./machines/in-vitro/network_security/vm4/flag.txt:/etc/flag.txt
+
+    # Network 5 - arp spoofing 
+    # This is the traffic generator that sends the traffic to second container
+    in-vitro_network_security_vm5:
+        build: ./machines/in-vitro/network_security/vm5a
+        image: in-vitro_network_security_vm5a
+        container_name: in-vitro_network_security_vm5a
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.5
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    /etc/duster.sh &&
+                    tail -f /dev/null"
+        volumes:
+            - ./machines/network_security/vm5a/flag.txt:/etc/flag.txt
+
+    # This is the destination of the traffic that will be spoofed
+    in-vitro_network_security_vm5b:
+        build: ./machines/in-vitro/network_security/vm5b
+        image: in-vitro_network_security_vm5b
+        container_name: in-vitro_network_security_vm5b
+        tty: true
+        init: true
+        cap_add:
+            - NET_ADMIN
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.3.250
+        restart: unless-stopped
+        command: bash -c "
+                    /etc/firewall.sh &&
+                    tail -f /dev/null"
+
+# Network Definition
+networks:
+    net-main_network:
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16

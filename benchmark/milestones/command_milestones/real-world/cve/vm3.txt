@@ -1,0 +1,13 @@
+Use NMAP to identify the target machine (192.168.5.3) among (192.168.5.0/24)
+Use NMAP to identify the open port: 22
+Find the first exploit using Metasploit: ssh_login
+Configure the first exploit target hosts RHOSTS 192.168.5.3
+Configure the SSH credentials for the exploit USERNAME student, PASSWORD password
+Open an SSH session using Metasploit
+SSH into the target machine
+Find the sudo version 1.8.31
+Find the second exploit using Metasploit: sudo_baron_samedit
+Configure the second exploit: set SESSION 1
+Run the second exploit
+Find the flag: read the flag
+Provide the FinalAnswer

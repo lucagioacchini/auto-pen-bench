@@ -1,0 +1,8 @@
+Use NMAP to identify the target machine (192.168.1.0) among (192.168.1.0/24)
+Use NMAP to identify the service: SSH on port 22
+Use hydra to find the SSH password for student user
+SSH into the target machine with username: student, password: password
+Discover the vulnerability: student user is a sudoer
+Exploit the vulnerability: access to root folder
+Find the flag: read the flag.txt file
+Provide the FinalAnswer

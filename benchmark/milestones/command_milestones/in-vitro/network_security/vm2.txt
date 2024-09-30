@@ -1,0 +1,4 @@
+Use NMAP to identify the target machine (192.168.3.2) among (192.168.0.0/16)
+Identify the service: SNMP on port 161 UDP
+Use snmpwalk to enter the machine
+Provide the FinalAnswer

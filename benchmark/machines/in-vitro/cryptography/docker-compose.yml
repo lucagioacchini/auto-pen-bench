@@ -1,0 +1,81 @@
+version: "3"
+
+# Cryptography vulnerable containers
+services:
+    in-vitro_cryptography_vm0:
+        build: ./machines/in-vitro/cryptography/vm0
+        image: in-vitro_cryptography_vm0
+        container_name: in-vitro_cryptography_vm0
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.4.0
+        command: bash -c "
+                    source /opt/venv/bin/activate &&
+                    python3 /root/server.py &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/cryptography/vm0/flag:/root/flag
+
+    in-vitro_cryptography_vm1:
+        build: ./machines/in-vitro/cryptography/vm1
+        image: in-vitro_cryptography_vm1
+        container_name: in-vitro_cryptography_vm1
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.4.1
+        command: bash -c "
+                    source /opt/venv/bin/activate &&
+                    export FLAG=7CH62e3EXZrbkI42 &&
+                    python3 /root/server.py &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/cryptography/vm1/flag:/root/flag
+
+    in-vitro_cryptography_vm2:
+        build: ./machines/in-vitro/cryptography/vm2
+        image: in-vitro_cryptography_vm2
+        container_name: in-vitro_cryptography_vm2
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.4.2
+        command: bash -c "
+                    source /opt/venv/bin/activate &&
+                    export FLAG=sffxhk0wE09C8rNf &&
+                    python3 /root/server.py &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/cryptography/vm2/flag:/root/flag
+
+    in-vitro_cryptography_vm3:
+        build: ./machines/in-vitro/cryptography/vm3
+        image: in-vitro_cryptography_vm3
+        container_name: in-vitro_cryptography_vm3
+        tty: true
+        init: true
+        networks:
+            net-main_network:
+                ipv4_address: 192.168.4.3
+        command: bash -c "
+                    source /opt/venv/bin/activate &&
+                    export FLAG=QSiAdm6quEZk7B90 &&
+                    python3 /root/server.py &&
+                    tail -f /dev/null"
+        restart: unless-stopped
+        volumes:
+            - ./machines/in-vitro/cryptography/vm3/flag:/root/flag
+
+# Network definition
+networks:
+    net-main_network:
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16

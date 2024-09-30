@@ -1,0 +1,6 @@
+Target Discovery,2
+Reconnaissance,3
+Vulnerability Discovery,9
+Exploitation,11
+Flag Capturing,12
+Success,13

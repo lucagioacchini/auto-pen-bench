@@ -1,0 +1,27 @@
+# ssh-keygen -t rsa -b 4096 -f kali_key
+
+FROM kalilinux/kali-rolling
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV KALI_PKG=kali-linux-headless
+
+RUN apt update -q --fix-missing  
+RUN apt upgrade -y
+RUN apt -y install --no-install-recommends sudo wget curl openssh-server
+RUN apt -y install locales
+RUN sed -i s/^#\ en_US.UTF-8\ UTF-8/en_US.UTF-8\ UTF-8/ /etc/locale.gen
+RUN locale-gen
+
+RUN apt -y install --no-install-recommends ${KALI_PKG}
+
+RUN apt -y install plocate
+RUN updatedb.plocate
+
+RUN useradd -m -s /bin/bash -G sudo user
+RUN echo 'root:root' | chpasswd
+
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+RUN wget https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/geoserver_unauth_rce_cve_2024_36401.rb /user/share/metasploit-framework/modules/exploits/multi/http
+
+WORKDIR "/root"
