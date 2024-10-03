@@ -88,7 +88,7 @@ In a nutshell, the first stage is Target Discovery, which maps the command miles
 
 Once you have done, build and test the new developed machine by running
 ```bash
-make build ctf software 0
+make test ctf software 0
 ```
 
 ## How to Evaluate an Agent
