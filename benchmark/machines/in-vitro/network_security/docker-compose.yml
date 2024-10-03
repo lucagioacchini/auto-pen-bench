@@ -3,7 +3,7 @@ version: '3'
 # Network Security vulnerable containers
 services:
     in-vitro_network_security_vm0:
-        build: ./machines/in-vitro/network_security/vm0
+        build: ./in-vitro/network_security/vm0
         image: in-vitro_network_security_vm0
         container_name: in-vitro_network_security_vm0
         tty: true
@@ -19,10 +19,10 @@ services:
                     service ssh start &&
                     tail -f /dev/null"        
         volumes:
-            - ./machines/in-vitro/network_security/vm0/flag.txt:/etc/motd  
+            - ./in-vitro/network_security/vm0/flag.txt:/etc/motd  
 
     in-vitro_network_security_vm1:
-        build: ./machines/in-vitro/network_security/vm1
+        build: ./in-vitro/network_security/vm1
         image: in-vitro_network_security_vm1
         container_name: in-vitro_network_security_vm1
         tty: true
@@ -38,10 +38,10 @@ services:
                     service ssh start &&
                     tail -f /dev/null"        
         volumes:
-            - ./machines/in-vitro/network_security/vm1/flag.txt:/etc/motd        
+            - ./in-vitro/network_security/vm1/flag.txt:/etc/motd        
 
     in-vitro_network_security_vm2:
-        build: ./machines/in-vitro/network_security/vm2
+        build: ./in-vitro/network_security/vm2
         image: in-vitro_network_security_vm2
         container_name: in-vitro_network_security_vm2
         tty: true
@@ -57,10 +57,10 @@ services:
                     service snmpd start &&
                     tail -f /dev/null"        
         volumes:
-            - ./machines/in-vitro/network_security/vm2/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
+            - ./in-vitro/network_security/vm2/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
 
     in-vitro_network_security_vm3:
-        build: ./machines/in-vitro/network_security/vm3
+        build: ./in-vitro/network_security/vm3
         image: in-vitro_network_security_vm3
         container_name: in-vitro_network_security_vm3
         tty: true
@@ -76,10 +76,10 @@ services:
                     service snmpd start &&
                     tail -f /dev/null"        
         volumes:
-            - ./machines/in-vitro/network_security/vm3/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
+            - ./in-vitro/network_security/vm3/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
 
     in-vitro_network_security_vm4:
-        build: ./machines/in-vitro/network_security/vm4
+        build: ./in-vitro/network_security/vm4
         image: in-vitro_network_security_vm4
         container_name: in-vitro_network_security_vm4
         tty: true
@@ -95,12 +95,12 @@ services:
                     /etc/duster.sh &&
                     tail -f /dev/null"        
         volumes:
-            - ./machines/in-vitro/network_security/vm4/flag.txt:/etc/flag.txt
+            - ./in-vitro/network_security/vm4/flag.txt:/etc/flag.txt
 
     # Network 5 - arp spoofing 
     # This is the traffic generator that sends the traffic to second container
     in-vitro_network_security_vm5:
-        build: ./machines/in-vitro/network_security/vm5a
+        build: ./in-vitro/network_security/vm5a
         image: in-vitro_network_security_vm5a
         container_name: in-vitro_network_security_vm5a
         tty: true
@@ -116,11 +116,11 @@ services:
                     /etc/duster.sh &&
                     tail -f /dev/null"
         volumes:
-            - ./machines/network_security/vm5a/flag.txt:/etc/flag.txt
+            - ./network_security/vm5a/flag.txt:/etc/flag.txt
 
     # This is the destination of the traffic that will be spoofed
     in-vitro_network_security_vm5b:
-        build: ./machines/in-vitro/network_security/vm5b
+        build: ./in-vitro/network_security/vm5b
         image: in-vitro_network_security_vm5b
         container_name: in-vitro_network_security_vm5b
         tty: true

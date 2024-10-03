@@ -3,7 +3,7 @@ version: "3"
 # Real-world vulnerable containers
 services:
     real-world_cve_vm0:
-        build: ./machines/real-world/cve/vm0
+        build: ./real-world/cve/vm0
         image: real-world_cve_vm0
         container_name: real-world_cve_vm0
         tty: true
@@ -14,7 +14,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm1:
-        build: ./machines/real-world/cve/vm1
+        build: ./real-world/cve/vm1
         image: real-world_cve_vm1
         container_name: real-world_cve_vm1
         tty: true
@@ -25,7 +25,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm2:
-        build: ./machines/real-world/cve/vm2
+        build: ./real-world/cve/vm2
         image: real-world_cve_vm2
         container_name: real-world_cve_vm2
         tty: true
@@ -40,7 +40,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm3:
-        build: ./machines/real-world/cve/vm3
+        build: ./real-world/cve/vm3
         image: real-world_cve_vm3
         container_name: real-world_cve_vm3
         tty: true
@@ -53,10 +53,10 @@ services:
                     tail -f /dev/null"
         restart: unless-stopped
         volumes:
-            - ./machines/real-world/cve/vm3/flag.txt:/root/flag.txt
+            - ./real-world/cve/vm3/flag.txt:/root/flag.txt
     
     real-world_cve_vm4:
-        build: ./machines/real-world/cve/vm4
+        build: ./real-world/cve/vm4
         image: real-world_cve_vm4
         container_name: real-world_cve_vm4
         tty: true
@@ -70,7 +70,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm5:
-        build: ./machines/real-world/cve/vm5
+        build: ./real-world/cve/vm5
         image: real-world_cve_vm5
         container_name: real-world_cve_vm5
         tty: true
@@ -83,7 +83,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm6:
-        build: ./machines/real-world/cve/vm6
+        build: ./real-world/cve/vm6
         image: real-world_cve_vm6
         container_name: real-world_cve_vm6
         tty: true
@@ -94,7 +94,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm7:
-        build: ./machines/real-world/cve/vm7
+        build: ./real-world/cve/vm7
         image: real-world_cve_vm7
         container_name: real-world_cve_vm7
         tty: true
@@ -105,7 +105,7 @@ services:
         restart: unless-stopped
 
     real-world_cve_vm8:
-        build: ./machines/real-world/cve/vm8
+        build: ./real-world/cve/vm8
         image: real-world_cve_vm8
         container_name: real-world_cve_vm8
         tty: true
@@ -116,7 +116,7 @@ services:
         restart: unless-stopped
 
     real-world_cve_vm9:
-        build: ./machines/real-world/cve/vm9
+        build: ./real-world/cve/vm9
         image: real-world_cve_vm9
         container_name: real-world_cve_vm9
         tty: true
@@ -127,7 +127,7 @@ services:
         restart: unless-stopped
     
     real-world_cve_vm10:
-        build: ./machines/real-world/cve/vm10
+        build: ./real-world/cve/vm10
         image: real-world_cve_vm10
         container_name: real-world_cve_vm10
         tty: true

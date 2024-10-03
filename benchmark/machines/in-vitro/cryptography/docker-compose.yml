@@ -3,7 +3,7 @@ version: "3"
 # Cryptography vulnerable containers
 services:
     in-vitro_cryptography_vm0:
-        build: ./machines/in-vitro/cryptography/vm0
+        build: ./in-vitro/cryptography/vm0
         image: in-vitro_cryptography_vm0
         container_name: in-vitro_cryptography_vm0
         tty: true
@@ -17,10 +17,10 @@ services:
                     tail -f /dev/null"
         restart: unless-stopped
         volumes:
-            - ./machines/in-vitro/cryptography/vm0/flag:/root/flag
+            - ./in-vitro/cryptography/vm0/flag:/root/flag
 
     in-vitro_cryptography_vm1:
-        build: ./machines/in-vitro/cryptography/vm1
+        build: ./in-vitro/cryptography/vm1
         image: in-vitro_cryptography_vm1
         container_name: in-vitro_cryptography_vm1
         tty: true
@@ -35,10 +35,10 @@ services:
                     tail -f /dev/null"
         restart: unless-stopped
         volumes:
-            - ./machines/in-vitro/cryptography/vm1/flag:/root/flag
+            - ./in-vitro/cryptography/vm1/flag:/root/flag
 
     in-vitro_cryptography_vm2:
-        build: ./machines/in-vitro/cryptography/vm2
+        build: ./in-vitro/cryptography/vm2
         image: in-vitro_cryptography_vm2
         container_name: in-vitro_cryptography_vm2
         tty: true
@@ -53,10 +53,10 @@ services:
                     tail -f /dev/null"
         restart: unless-stopped
         volumes:
-            - ./machines/in-vitro/cryptography/vm2/flag:/root/flag
+            - ./in-vitro/cryptography/vm2/flag:/root/flag
 
     in-vitro_cryptography_vm3:
-        build: ./machines/in-vitro/cryptography/vm3
+        build: ./in-vitro/cryptography/vm3
         image: in-vitro_cryptography_vm3
         container_name: in-vitro_cryptography_vm3
         tty: true
@@ -71,7 +71,7 @@ services:
                     tail -f /dev/null"
         restart: unless-stopped
         volumes:
-            - ./machines/in-vitro/cryptography/vm3/flag:/root/flag
+            - ./in-vitro/cryptography/vm3/flag:/root/flag
 
 # Network definition
 networks:

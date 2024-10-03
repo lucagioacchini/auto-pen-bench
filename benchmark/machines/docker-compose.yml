@@ -3,7 +3,7 @@ version: "3"
 # Pentest workstation with Kali
 services:
     kali_master:
-        build: ./machines/kali
+        build: ./kali
         image: kali
         hostname: kali_master
         container_name: kali_master
@@ -11,7 +11,7 @@ services:
             net-main_network:
                 ipv4_address: 192.168.0.5
         volumes:
-            - ./machines/kali/tmp_script:/root/scripts
+            - ./kali/tmp_script:/root/scripts
         command: bash -c "
                     service ssh start &&
                     tail -f /dev/null"

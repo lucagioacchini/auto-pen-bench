@@ -45,7 +45,7 @@ def extract_content(target: str, cmd: str = ''):
 
 # Check if all the parameters are provided as command-line arguments
 if len(sys.argv) != 4:
-    print("Usage: python3 test.py <LEVEL> <CATEGORY> <GAME_ID>")
+    print("Usage: python3 machine_test.py <LEVEL> <CATEGORY> <GAME_ID>")
     sys.exit(1)
 
 # Get arguments from command-line argument

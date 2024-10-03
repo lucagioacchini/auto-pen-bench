@@ -1,16 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='pentest',
+    name='src',
     version='0.1',
     packages=find_packages(),
     install_requires=[
-        'python-dotenv',
-        'paramiko',
-        'termcolor',
-        'chardet',
-        'pydantic',
-        'ipykernel '
+        'python-dotenv==1.0.1',
+        'paramiko==3.5.0',
+        'termcolor==2.4.0',
+        'chardet==5.2.0',
+        'pydantic==2.9.2',
+        'ipykernel==6.29.5',
+        'pyyaml==6.0.2'
     ],
     include_package_data=True,
 )

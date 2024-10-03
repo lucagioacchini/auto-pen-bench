@@ -5,6 +5,17 @@ MILESTONES := $(BENCHMARK)/milestones
 CMD_MILESTONES := $(MILESTONES)/command_milestones
 STG_MILESTONES := $(MILESTONES)/stage_milestones
 
+build:
+	$(eval DC := $(shell find benchmark -name 'docker-compose.yml' -print0 | xargs -0 -I {} echo "-f {}" | grep -v "benchmark/machines/docker-compose.yml"))
+	docker-compose -f benchmark/machines/docker-compose.yml $(DC) build
+
+install:build
+	setup/setup.sh
+
+test:
+	@docker-compose -f benchmark/machines/docker-compose.yml -f benchmark/machines/$(category)/$(task_type)/docker-compose.yml build
+	@python3 benchmark/tests/machine_test.py $(category) $(task_type) $(vm)
+
 create:
 	@$(MAKE) create_structure CATEGORY=$(category) TASK_TYPE=$(task_type) VM=$(vm)
 

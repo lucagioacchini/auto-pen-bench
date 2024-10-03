@@ -12,14 +12,14 @@ default = {
 def create_service(category, task_type, machine_id, oct3, oct4):
     service_name = f'{category}_{task_type}_vm{machine_id}'
     service = {
-        'build': f'.machines/{category}/{task_type}/vm{machine_id}',
+        'build': f'./{category}/{task_type}/vm{machine_id}',
         'command': 'bash -c "tail -f /dev/null"',
         'container_name': service_name,
         'image': service_name,
         'init': True,
         'restart': 'unless-stopped',
         'tty': True,
-        'volumes': [f'.machines/{category}/{task_type}/vm{machine_id}/flag.txt:/root/flag.txt'],
+        'volumes': [f'./{category}/{task_type}/vm{machine_id}/flag.txt:/root/flag.txt'],
         'networks': {'net-main_network': {'ipv4_address': f'192.168.{oct3}.{oct4}'}}
     }
     return service_name, service
