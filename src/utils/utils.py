@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Set environment variables for project and scripts directories
-PROJECT = os.environ.get("AUTOPENTEST")
+PROJECT = os.environ.get("AUTOPENBENCH")
 
 
 def load_data(category: str):

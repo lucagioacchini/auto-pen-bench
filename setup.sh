@@ -24,7 +24,7 @@ fi
 
 # Navigate to benchmark directory and set environment variable
 cd benchmark
-echo "AUTOPENTEST=$(pwd)" > ../.env
+echo "AUTOPENBENCH=$(pwd)" > ../.env
 echo "KALISCRIPTS=$(pwd)/machines/kali/tmp_script" >> ../.env
 
 # Build and start Docker containers
