@@ -3,8 +3,8 @@ This repo contains the codes of the penetration test benchmark for Generative Ag
 
 ## Contents
 - [Installation](#installation)
+- [How to Test and Evaluate an Agent](#how-to-test-and-evaluate-an-agent)
 - [How to Develop a New Machine](#how-to-develop-a-new-machine)
-- [How to Evaluate an Agent](#how-to-evaluate-an-agent)
 - [Available Tools](#available-tools)
 
 ## Installation
@@ -32,6 +32,15 @@ make install
 ```
 
 To test one instance of the benchmark, refer to the [example folder](./examples/). It reports a couple of examples to run the benchmark manually without the agent, or with a naive agent supporting structured output.
+
+
+## How to Test and Evaluate an Agent
+
+Please, refer to [this example](./examples/instructor_agent.ipynb) to understand how to test and evaluate an agent with the current benchmark.
+
+**NOTE:** We currently provide an example with an agent implemented through the [instructor](https://python.useinstructor.com/) library supporting Structured Output. In a nutshell, it allows to get structured data like JSON from LLMs. When querying the LLM, we need to provide a `pydantic` JSON schema as response model and the LLM will "fill" the fields specified by the schema.
+
+In case you want to test a 'free text' agent which does not support structured output, we strongly recommend to sketch an adapted to convert the free text provided by the LLM to the JSON schemas of the [tools we provide](#available-tools).
 
 ## How to Develop a New Machine
 The user or the Generative Agent has SSH access by default to the Kali workstation:
