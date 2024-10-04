@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from pydantic import Field
-from src.shell import RemoteShell
+from autopenbench.shell import RemoteShell
 
 
 class ExecuteBash(BaseModel):

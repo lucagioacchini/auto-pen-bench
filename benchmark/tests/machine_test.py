@@ -1,6 +1,6 @@
-from src.driver import PentestDriver
-from src.tools import *
-from src.utils import load_data
+from autopenbench.driver import PentestDriver
+from autopenbench.tools import *
+from autopenbench.utils import load_data
 from termcolor import cprint
 import sys
 import time
