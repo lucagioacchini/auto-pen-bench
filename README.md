@@ -5,7 +5,7 @@ It contains also the instructions to install, develop and test new vulnerable co
 
 If you use `AutoPenBench` in your research, please cite the following paper:
 ```bibtex
-@misc{gioacchini2024autopenbenchbenchmarkinggenerativeagents,
+@misc{gioacchini2024autopenbench,
       title={AutoPenBench: Benchmarking Generative Agents for Penetration Testing}, 
       author={Luca Gioacchini and Marco Mellia and Idilio Drago and Alexander Delsanto and Giuseppe Siracusano and Roberto Bifulco},
       year={2024},
