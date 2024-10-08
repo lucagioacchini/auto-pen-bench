@@ -3,6 +3,19 @@ This repo contains the codes of the penetration test benchmark for Generative Ag
 
 It contains also the instructions to install, develop and test new vulnerable containers to include in the benchmark. 
 
+If you use `AutoPenBench` in your research, please cite the following paper:
+```bibtex
+@misc{gioacchini2024autopenbenchbenchmarkinggenerativeagents,
+      title={AutoPenBench: Benchmarking Generative Agents for Penetration Testing}, 
+      author={Luca Gioacchini and Marco Mellia and Idilio Drago and Alexander Delsanto and Giuseppe Siracusano and Roberto Bifulco},
+      year={2024},
+      eprint={2410.03225},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2410.03225}, 
+}
+```
+
 **Note** if you need to reproduce the experiments of the paper, [this repository](https://github.com/lucagioacchini/genai-pentest-paper).
 
 ## Contents
