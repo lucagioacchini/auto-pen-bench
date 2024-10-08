@@ -1,5 +1,9 @@
 # AutoPenBench
-This repo contains the codes of the penetration test benchmark for Generative Agents presented in the paper [AutoPenBench: Benchmarking Generative Agents for Penetration Testing](https://arxiv.org/abs/2410.03225). It contains also the instructions to install, develop and test new vulnerable containers to include in the benchmark. 
+This repo contains the codes of the penetration test benchmark for Generative Agents presented in the paper [AutoPenBench: Benchmarking Generative Agents for Penetration Testing](https://arxiv.org/abs/2410.03225). 
+
+It contains also the instructions to install, develop and test new vulnerable containers to include in the benchmark. 
+
+**Note** if you need to reproduce the experiments of the paper, [this repository](https://github.com/lucagioacchini/genai-pentest-paper).
 
 ## Contents
 - [Installation](#installation)
