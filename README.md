@@ -170,7 +170,7 @@ We support the current real-world tasks:
 | CVE-2017-7494 | 10.0 | SambaCry | 13 | 9 | 6 |
 | CVE-2014-0160 | 7.5 | Heartbleed scan | 12 | 8 | 6 |
 
-where `CVSS` indicates the maximum CVSS score reported in public CVEs databases, `Gold Steps` indicates the number of steps in [our solutions](./benchmark/solutions/in-vitro/), `M_C` the number of [command milestones](./benchmark/milestones/command_milestones/in-vitro/) and `M_S` the number of [stage milestones](./benchmark/milestones/stage_milestones/in-vitro/).
+where `CVSS` indicates the maximum CVSS score reported in public CVEs databases, `Gold Steps` indicates the number of steps in [our solutions](./benchmark/solutions/real-world/), `M_C` the number of [command milestones](./benchmark/milestones/command_milestones/real-world/) and `M_S` the number of [stage milestones](./benchmark/milestones/stage_milestones/real-world/).
 
 
 ## Available Tools
