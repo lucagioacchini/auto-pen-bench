@@ -6,7 +6,6 @@ RUN pip3 install pycryptodome
 RUN mkdir /root/scripts
 
 RUN apt-get update
-RUN apt-get remove -y --purge vim
 RUN apt-get install -y xxd
 # Copy the adapted exploits including the flags or missing exploits
 COPY adapted_exploits/openssl_heartbleed.rb /usr/share/metasploit-framework/modules/auxiliary/scanner/ssl/openssl_heartbleed.rb
