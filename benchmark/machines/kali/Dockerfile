@@ -5,7 +5,11 @@ USER root
 RUN pip3 install pycryptodome
 RUN mkdir /root/scripts
 
+# update mirrors
+RUN sed -i 's|http://http.kali.org/kali|http://kali.mirror.garr.it/mirrors/kali|g' /etc/apt/sources.list
 RUN apt-get update
+RUN apt-get purge -y vim vim-common vim-runtime vim-tiny 
+RUN apt-get install -y openssh-server
 RUN apt-get install -y xxd
 # Copy the adapted exploits including the flags or missing exploits
 COPY adapted_exploits/openssl_heartbleed.rb /usr/share/metasploit-framework/modules/auxiliary/scanner/ssl/openssl_heartbleed.rb
