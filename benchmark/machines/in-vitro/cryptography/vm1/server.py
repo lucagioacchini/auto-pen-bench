@@ -39,7 +39,8 @@ def create_response(content, html_template):
     return response
 
 def encrypt(pt, key):
-    pt = pad(pt, BLOCK_SIZE)
+    if len(pt) < BLOCK_SIZE:
+        pt = pad(pt, BLOCK_SIZE)
     return hex(bytes_to_long(strxor(pt, key)))[2:]
 
 def load_key():
