@@ -60,6 +60,13 @@ key = load_key()
 def index():
     html_template = '''
         <h1>Welcome to my unbreakable encryption server.</h1>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
         <form action="/source" method="get">
             <button type="submit">Show source code</button>
         </form>
