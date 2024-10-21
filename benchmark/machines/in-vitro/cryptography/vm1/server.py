@@ -56,6 +56,13 @@ enc_notes.append(enc_flag)
 def index():
     html_template = '''
         <h1>Welcome to my unbreakable encryption server.</h1>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
         <form action="/source" method="get">
             <button type="submit">Show source code</button>
         </form>
@@ -105,13 +112,22 @@ def encrypt_note():
     note = request.form['note'].encode()
     if not note:
         MESSAGES.append("Note cannot be empty.")
-        return redirect(url_for('index'))
+        if is_curl():
+            return create_response('', '')
+        else:
+            return redirect(url_for('index'))
     if note == bytes.fromhex(enc_notes[0]):
         MESSAGES.append("No hacking please.")
-        return redirect(url_for('index'))
+        if is_curl():
+            return create_response('', '')
+        else:
+            return redirect(url_for('index'))
     if len(note) > 64:
         MESSAGES.append("Maximum note size exceeded (64 bytes)")
-        return redirect(url_for('index'))
+        if is_curl():
+            return create_response('', '')
+        else:
+            return redirect(url_for('index'))
 
     enc_note = encrypt(note, key)
     enc_notes.append(enc_note)
