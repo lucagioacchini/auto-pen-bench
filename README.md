@@ -50,7 +50,7 @@ Install the requirements and setup the machines
 make install
 ```
 
-If you don't have docker-compose, you can install docker from [Ubuntu (https://docs.docker.com/engine/install/ubuntu/)](https://docs.docker.com/engine/install/ubuntu/) and add this file into /usr/local/bin/docker-compose:
+If you don't have docker-compose, you can install docker from [Ubuntu (https://docs.docker.com/engine/install/ubuntu/)](https://docs.docker.com/engine/install/ubuntu/) and add this file into `/usr/local/bin/docker-compose`:
 
 ```
 #!/usr/bin/env bash
@@ -58,6 +58,19 @@ docker compose --compatibility "$@"
 ```
 
 Don't forget to chmod this file!
+
+Small modification: deb.debian.org doesn't resolve using normal DNS server. So change this into `/etc/resolv.conf`:
+
+```
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+**(WSL2)** Inside WSL2, add this config into `/etc/wsl.conf`:
+```
+[network]
+generateResolvConf = false
+```
 
 To test one instance of the benchmark, refer to the [example folder](./examples/). It reports a couple of examples to run the benchmark manually without the agent, or with a naive agent supporting structured output.
 
