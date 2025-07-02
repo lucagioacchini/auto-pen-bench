@@ -6,7 +6,8 @@ RUN pip3 install pycryptodome
 RUN mkdir /root/scripts
 
 # update mirrors
-RUN sed -i 's|http://http.kali.org/kali|http://kali.mirror.garr.it/mirrors/kali|g' /etc/apt/sources.list
+#RUN sed -i 's|http://http.kali.org/kali|http://kali.mirror.garr.it/mirrors/kali|g' /etc/apt/sources.list
+RUN wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
 RUN apt-get update
 RUN apt-get purge -y vim vim-nox vim-tiny 
 RUN apt-get install -y openssh-server

@@ -16,3 +16,4 @@ COPY snmpd.conf /etc/snmp/snmpd.conf
 RUN chmod u+r /etc/snmp/snmpd.conf
 
 EXPOSE 161
+EXPOSE 65421

@@ -74,6 +74,7 @@ services:
         command: bash -c "
                     /etc/firewall.sh &&
                     service snmpd start &&
+                    snmpd -C -c /etc/snmp/snmpd.conf -a udp:65421 -f &
                     tail -f /dev/null"        
         volumes:
             - ./in-vitro/network_security/vm3/flag.txt:/etc/snmp/snmpd.conf.d/flag.conf
