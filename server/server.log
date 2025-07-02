@@ -1406,3 +1406,44 @@ google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quot
 2025-06-30 16:31:15,932 Connected (version 2.0, client OpenSSH_10.0p2)
 2025-06-30 16:31:16,093 Authentication (password) successful!
 2025-06-30 16:31:16,704 127.0.0.1 - - [30/Jun/2025 16:31:16] "POST /load_task HTTP/1.1" 200 -
+2025-07-02 08:58:20,511 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 08:58:20,512 [33mPress CTRL+C to quit[0m
+2025-07-02 08:58:30,125 Endpoint: /load_task | Data: {'category': 'in-vitro', 'subcat': 'network_security', 'id': '3'}
+2025-07-02 09:00:05,480 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 09:00:05,480 [33mPress CTRL+C to quit[0m
+2025-07-02 09:00:10,073 Endpoint: /load_task | Data: {'category': 'in-vitro', 'subcat': 'network_security', 'id': '3'}
+2025-07-02 09:00:17,172 Endpoint: /load_task | Data: {'category': 'in-vitro', 'subcat': 'network_security', 'id': '3'}
+2025-07-02 09:00:24,946 Exception on /load_task [POST]
+Traceback (most recent call last):
+  File "/home/jc/.local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jc/.local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jc/.local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jc/.local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/jc/auto-pen-bench/server/app.py", line 39, in load_task
+    observation, done = driver.reset()
+  File "/home/jc/auto-pen-bench/autopenbench/driver/pentest_driver.py", line 168, in reset
+    self.start_containers()
+  File "/home/jc/auto-pen-bench/autopenbench/driver/pentest_driver.py", line 141, in start_containers
+    restart_docker_compose_service(self.target)
+  File "/home/jc/auto-pen-bench/autopenbench/driver/pentest_driver.py", line 63, in restart_docker_compose_service
+    subprocess.run(commands, check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker-compose', '-f', 'benchmark/machines/docker-compose.yml', '-f', 'benchmark/machines/in-vitro/access_control/docker-compose.yml', '-f', 'benchmark/machines/in-vitro/web_security/docker-compose.yml', '-f', 'benchmark/machines/in-vitro/network_security/docker-compose.yml', '-f', 'benchmark/machines/in-vitro/cryptography/docker-compose.yml', '-f', 'benchmark/machines/real-world/cve/docker-compose.yml', 'up', '-d', 'kali_master']' returned non-zero exit status 1.
+2025-07-02 09:00:24,948 127.0.0.1 - - [02/Jul/2025 09:00:24] "[35m[1mPOST /load_task HTTP/1.1[0m" 500 -
+2025-07-02 09:00:26,391 Connected (version 2.0, client OpenSSH_10.0p2)
+2025-07-02 09:00:26,568 Authentication (password) successful!
+2025-07-02 09:00:27,198 127.0.0.1 - - [02/Jul/2025 09:00:27] "POST /load_task HTTP/1.1" 200 -
+2025-07-02 09:00:32,898 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 09:00:32,898 [33mPress CTRL+C to quit[0m
+2025-07-02 09:00:34,749 Endpoint: /load_task | Data: {'category': 'in-vitro', 'subcat': 'network_security', 'id': '3'}
+2025-07-02 09:00:47,950 Connected (version 2.0, client OpenSSH_10.0p2)
+2025-07-02 09:00:48,114 Authentication (password) successful!
+2025-07-02 09:00:48,722 127.0.0.1 - - [02/Jul/2025 09:00:48] "POST /load_task HTTP/1.1" 200 -
