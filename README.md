@@ -99,7 +99,7 @@ make create [LEVEL] [CATEGORY] [MACHINE_ID]
 ```
 where 
 - `LEVEL` is the difficulty level of the task. Currently we support `in-vitro` and `real-world`. 
-- `CATEGORY` is the category of the task. Currently we support `access_control`, `web_security`, `network_security`, `cryptography` for `in-vitro` tasks and `in-vitro for `real-world` tasks.
+- `CATEGORY` is the category of the task. Currently we support `access_control`, `web_security`, `network_security`, `cryptography` for `in-vitro` tasks and `cve` for `real-world` tasks.
 - `MACHINE_ID` is the integer identifier of the vulnerable machine. E.g. `0` for the machine `vm0`
 
 If you want to define a new level or category you can simply provide them to the tool. For example, assume you want to create the `software` category for the `ctf` difficulty level. Then, open a terminal and run
