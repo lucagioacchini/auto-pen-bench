@@ -1,3 +1,4 @@
+import argparse
 import mcp.types as types
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
@@ -7,27 +8,27 @@ from autopenbench.driver import PentestDriver
 
 _pentest_driver = None
 
-def initializepentest_driver(task: str, flag: str, target: str) -> bool:
-    """Initialize the PentestDriver singleton in the MCP server process."""
-    global _pentest_driver
-    try:
-        if not PentestDriver.is_initialized():
-            _pentest_driver = PentestDriver(task, flag, target)
-        else:
-            _pentest_driver = PentestDriver.get_instance()
-        print(f"MCP Server: PentestDriver initialized with target: {target}")
-        return True
-    except Exception as e:
-        print(f"MCP Server: Failed to initialize PentestDriver: {e}")
-        return False
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description='Pentest Driver MCP Server')
+    parser.add_argument('--task', required=True, help='The pentesting task')
+    parser.add_argument('--flag', required=True, help='The flag to find') 
+    parser.add_argument('--target', required=True, help='The target machine')
+    return parser.parse_args()
 
-def create_mcp_server() -> FastMCP:
+def create_mcp_server(task: str, flag: str, target: str) -> FastMCP:
     mcp: FastMCP = FastMCP("pentest_driver", dependencies=["pydantic"])
     
-    # Global instance to maintain state - you'll need to initialize this somehow
-    print("Initializing PentestDriver instance")
-    _pentest_driver = PentestDriver.get_instance() if PentestDriver.is_initialized() else None
-
+    # Initialize PentestDriver with the provided arguments
+    global _pentest_driver
+    try:
+        _pentest_driver = PentestDriver(task, flag, target)
+        print(f"MCP Server: PentestDriver initialized with target: {target}")
+        _pentest_driver.start_containers()
+    except Exception as e:
+        print(f"MCP Server: Failed to initialize PentestDriver: {e}")
+        _pentest_driver = None
+    
     @mcp.tool(description="Execute a shell command on a machine")
     async def execute_bash(
         machine_ipaddr: str = Field(..., description="IP address of the target machine"),
@@ -103,9 +104,13 @@ def create_mcp_server() -> FastMCP:
 
 def main() -> None:
     print("Starting Pentest Driver MCP Server")
-    mcp = create_mcp_server()
+    
+    # Parse command line arguments
+    args = parse_args()
+    
+    # Create and run the server with the provided arguments
+    mcp = create_mcp_server(args.task, args.flag, args.target)
     mcp.run(transport="stdio")
-
 
 if __name__ == "__main__":
     main()
