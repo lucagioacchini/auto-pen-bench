@@ -1,5 +1,9 @@
 FROM debian:buster
 
+RUN sed -i 's|http://deb.debian.org|http://archive.debian.org|g' /etc/apt/sources.list \
+    && sed -i 's|http://security.debian.org|http://archive.debian.org|g' /etc/apt/sources.list \
+    && sed -i '/stretch-updates/d' /etc/apt/sources.list
+
 ADD https://github.com/openssl/openssl/archive/OpenSSL_1_0_1c.tar.gz /OpenSSL_1_0_1c.tar.gz
 
 RUN set -ex \
@@ -13,7 +17,7 @@ RUN set -ex \
     && apt-get purge -y --auto-remove gcc make perl \
     && rm -rf /usr/src/* /var/lib/apt/lists/*
 
-    RUN set -ex \
+RUN set -ex \
     && apt-get update \
     && apt-get install -y --no-install-recommends gcc make g++ wget ca-certificates \
     && cd /usr/src \
